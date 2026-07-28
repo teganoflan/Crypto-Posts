@@ -1,0 +1,36 @@
+# I Finally Set Up a Hardware Wallet (And Why I Was Nervous About It)
+
+For my first few months in crypto, everything I owned sat on the exchange where I bought it. It felt fine. Then I kept seeing the phrase "not your keys, not your coins," and I finally looked into what it meant.
+
+## The short version
+
+When you hold crypto on an exchange, they control the private keys, which are basically the passwords that prove the coins are yours. If the exchange gets hacked, freezes withdrawals, or goes under, you're stuck waiting and hoping. A hardware wallet is a small device that stores your keys offline, so you're the one in control.
+
+That sounded great. It also sounded scary, because now if I mess up, there's no customer support to call.
+
+## What the setup was actually like
+
+I ordered the device **directly from the manufacturer's official website**. I read that people sometimes get tampered devices from third-party sellers, so I didn't want to risk it.
+
+Setup took about 30 minutes:
+
+1. Plugged it in and installed the official companion app.
+2. Set a PIN on the device.
+3. The device showed me a **seed phrase**, a list of 24 words. This is the master backup. Anyone with these words can take everything.
+4. I wrote the words down on paper (the card that came in the box), double-checked every one, and confirmed them on the device.
+5. Sent a *small* test amount from the exchange to my new wallet address before moving anything else.
+
+That test transaction was the most nervous I've been in crypto. Watching it show up felt like a big win.
+
+## Rules I'm following now
+
+- **The seed phrase never goes on a computer or phone.** No photos, no notes app, no cloud storage, no email to myself.
+- **Store the backup somewhere safe** and away from the device itself.
+- **Always double-check the address** before sending. I check the first and last several characters every time.
+- **Start small.** Test transactions cost a little in fees but save a lot of stress.
+
+## Was it worth it?
+
+For me, yes. I still keep a small amount on the exchange for buying, but most of what I own now lives on the hardware wallet. I understand my own setup way better, and I sleep better too.
+
+If you've been putting this off like I was, read up on it and take your time. Going slow is the right call here.
