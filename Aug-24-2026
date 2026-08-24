@@ -1,0 +1,36 @@
+# Trying to Explain Blockchain to Myself (In Plain English)
+
+I bought crypto before I could explain what a blockchain actually is. That bugged me. So this week I made myself sit down and learn it well enough to explain it simply. Here's my attempt. If I get something wrong, I'd honestly love to be corrected.
+
+## Start with a notebook
+
+Picture a notebook where people write down transactions: "Alex sent Sam 1 coin." Now imagine that instead of one person owning the notebook, **thousands of people each have an identical copy**, and they all keep their copies in sync.
+
+If someone tries to sneak a fake entry into their copy, it won't match everyone else's, so it gets rejected. No single person is in charge, but everyone agrees on what happened. That shared notebook is basically the idea behind a blockchain.
+
+## Why "blocks" and why "chain"?
+
+Transactions get grouped into pages, called **blocks**. Each new block includes a kind of digital fingerprint (a *hash*) of the block before it. That links them together into a **chain**.
+
+If you tried to change an old block, its fingerprint would change, which would break the link to every block after it. That's why people say blockchains are hard to tamper with. You'd have to redo a huge amount of work and convince most of the network to go along with you.
+
+## Who adds the new pages?
+
+This was the part that confused me most. Different blockchains handle it differently:
+
+- **Proof of Work** (what Bitcoin uses): computers called miners compete to solve a hard math puzzle. The winner adds the next block and earns a reward. It uses a lot of electricity, which is part of what makes it secure.
+- **Proof of Stake** (what Ethereum switched to): people lock up, or "stake," their coins as collateral to help validate blocks. If they cheat, they can lose what they staked.
+
+Both are ways of getting a crowd of strangers to agree on one version of the truth without trusting a middleman.
+
+## So what's the point?
+
+The big idea is that you can send value to someone without a bank in the middle approving it, and the record is public and very hard to change. Whether that matters to you depends on who you are. For some people it's about curiosity, for some it's about control over their own money, and for others it's practical, like sending money across borders.
+
+## What I'm still fuzzy on
+
+- How smart contracts actually work under the hood
+- Why some blockchains are so much faster and cheaper than others
+- Layer 2 networks (I keep hearing about them)
+
+Those are next on my list. Writing this out helped a lot. If you're new, try explaining it to a friend. You find out pretty quickly what you don't understand yet.
