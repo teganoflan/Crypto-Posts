@@ -136,6 +136,20 @@
   .about { padding: 48px 0; }
   .about h1 { font-family: "Source Serif 4", Georgia, serif; font-size: 2.2rem; margin: 0 0 20px; }
   .about p { font-size: 1.1rem; }
+  .contact {
+    margin-top: 36px; padding: 24px; border: 1px solid var(--border);
+    border-radius: 12px; background: var(--surface);
+  }
+  .contact h2 { margin: 0 0 6px; font-size: 1.2rem; }
+  .contact p { margin: 0 0 16px; color: var(--muted); font-size: 1rem; }
+  .contact ul { list-style: none; margin: 0; padding: 0; }
+  .contact li {
+    display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline;
+    padding: 10px 0; border-top: 1px solid var(--border);
+  }
+  .contact li span { width: 110px; color: var(--muted); font-size: 0.9rem; }
+  .contact a { font-weight: 600; text-decoration: none; word-break: break-all; }
+  .contact a:hover { text-decoration: underline; }
 
   footer {
     margin-top: 64px; padding: 28px 0; border-top: 1px solid var(--border);
@@ -189,6 +203,14 @@ const ABOUT_HTML = `
   <h1>About</h1>
   <p>Hey, thanks for stopping by. I got into crypto earlier this year after a friend kept bringing it up, and I've been hooked on learning about it ever since.</p>
   <p>I'm not an expert or a financial advisor. This blog is where I write down what I'm learning, what I'm trying, and the questions I still have. If you've been at this longer than me, I'd love to hear from you.</p>
+  <div class="contact">
+    <h2>Get in touch</h2>
+    <p>Feel free to reach out with tips, questions, or just to say hi.</p>
+    <ul>
+      <li><span>Email</span><a href="mailto:tegan.oflannery@alleo.uk">tegan.oflannery@alleo.uk</a></li>
+      <li><span>Phone / text</span><a href="tel:+15205252932">520-525-2932</a></li>
+    </ul>
+  </div>
 `;
 
 /* ---------- helpers ---------- */
