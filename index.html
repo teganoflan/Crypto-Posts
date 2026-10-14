@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Crypto in Public</title>
+<meta name="description" content="A beginner figuring out crypto one step at a time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --text: #1d1d1f;
+    --muted: #6b6b70;
+    --border: #e7e4dd;
+    --accent: #e8891c;
+    --accent-soft: #fdf1e2;
+    --link: #b85f00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141416;
+      --surface: #1c1c1f;
+      --text: #ececee;
+      --muted: #9a9aa1;
+      --border: #2c2c31;
+      --accent: #f4a340;
+      --accent-soft: #2a2117;
+      --link: #f4a340;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--link); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header.site {
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  header.site .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 18px; padding-bottom: 18px; gap: 16px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; color: var(--text); font-weight: 700; font-size: 1.05rem;
+  }
+  .brand .logo {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: grid; place-items: center; font-weight: 700; font-size: 0.95rem;
+  }
+  nav a {
+    color: var(--muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; margin-left: 18px;
+  }
+  nav a:hover, nav a.active { color: var(--text); }
+
+  /* Hero */
+  .hero { padding: 56px 0 32px; }
+  .hero h1 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: clamp(2rem, 6vw, 2.8rem); line-height: 1.15; margin: 0 0 14px;
+  }
+  .hero p { color: var(--muted); font-size: 1.1rem; margin: 0; max-width: 560px; }
+  .tag {
+    display: inline-block; background: var(--accent-soft); color: var(--link);
+    font-size: 0.8rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; margin-bottom: 16px;
+  }
+
+  /* Post list */
+  .section-label {
+    font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); margin: 24px 0 8px;
+  }
+  .post-card {
+    display: block; text-decoration: none; color: inherit;
+    padding: 24px 0; border-top: 1px solid var(--border);
+  }
+  .post-card:last-child { border-bottom: 1px solid var(--border); }
+  .post-card .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; }
+  .post-card h2 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.4rem; line-height: 1.3; margin: 0 0 8px;
+    transition: color .15s;
+  }
+  .post-card:hover h2 { color: var(--link); }
+  .post-card p { margin: 0; color: var(--muted); }
+  .read-more { display: inline-block; margin-top: 10px; font-weight: 600; font-size: 0.9rem; color: var(--link); }
+
+  /* Article */
+  article { padding: 48px 0 24px; }
+  .back { font-size: 0.9rem; text-decoration: none; color: var(--muted); font-weight: 500; }
+  .back:hover { color: var(--text); }
+  article .meta { color: var(--muted); font-size: 0.9rem; margin: 24px 0 8px; }
+  article h1 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: clamp(1.9rem, 5.5vw, 2.5rem); line-height: 1.2; margin: 0 0 28px;
+  }
+  .content { font-family: "Source Serif 4", Georgia, serif; font-size: 1.15rem; line-height: 1.75; }
+  .content h2 { font-family: "Inter", sans-serif; font-size: 1.25rem; margin: 2em 0 0.6em; }
+  .content h3 { font-family: "Inter", sans-serif; font-size: 1.1rem; margin: 1.6em 0 0.5em; }
+  .content p, .content ul, .content ol { margin: 0 0 1.2em; }
+  .content li { margin-bottom: 0.4em; }
+  .content strong { font-weight: 700; }
+  .content code { background: var(--accent-soft); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  .content blockquote {
+    margin: 1.5em 0; padding: 4px 20px; border-left: 3px solid var(--accent); color: var(--muted);
+  }
+
+  .post-nav {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin: 40px 0 0; padding-top: 24px; border-top: 1px solid var(--border);
+  }
+  .post-nav a {
+    text-decoration: none; color: inherit; padding: 16px; border: 1px solid var(--border);
+    border-radius: 10px; background: var(--surface); transition: border-color .15s;
+  }
+  .post-nav a:hover { border-color: var(--accent); }
+  .post-nav .dir { font-size: 0.8rem; color: var(--muted); display: block; margin-bottom: 4px; }
+  .post-nav .t { font-weight: 600; font-size: 0.95rem; line-height: 1.35; }
+  .post-nav .next { text-align: right; grid-column: 2; }
+
+  /* About */
+  .about { padding: 48px 0; }
+  .about h1 { font-family: "Source Serif 4", Georgia, serif; font-size: 2.2rem; margin: 0 0 20px; }
+  .about p { font-size: 1.1rem; }
+
+  footer {
+    margin-top: 64px; padding: 28px 0; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 0.85rem; text-align: center;
+  }
+  .status { padding: 48px 0; color: var(--muted); }
+
+  @media (max-width: 520px) {
+    .post-nav { grid-template-columns: 1fr; }
+    .post-nav .next { grid-column: 1; }
+    nav a { margin-left: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#/"><span class="logo">₿</span>Learning Crypto in Public</a>
+    <nav>
+      <a href="#/" id="nav-home">Posts</a>
+      <a href="#/about" id="nav-about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="app"><p class="status">Loading…</p></main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Learning Crypto in Public · Just a guy figuring it out.</div>
+</footer>
+
+<script>
+/* ===========================================================
+   ADD NEW POSTS HERE
+   Each entry is the file name inside the "Posts" folder.
+   File names are case-sensitive on GitHub Pages.
+   The date shown on the site comes from the file name,
+   and the title comes from the "# Heading" on line 1 of the post.
+   =========================================================== */
+const POSTS_FOLDER = "Posts";
+const POST_FILES = [
+  "Jul-4-2026.md",
+  "Jul-28-2026.md",
+  "Aug-24-2026.md",
+  "Sep-12-2026.md",
+  "Oct-8-2026.md",
+];
+
+const ABOUT_HTML = `
+  <h1>About</h1>
+  <p>Hey, thanks for stopping by. I got into crypto earlier this year after a friend kept bringing it up, and I've been hooked on learning about it ever since.</p>
+  <p>I'm not an expert or a financial advisor. This blog is where I write down what I'm learning, what I'm trying, and the questions I still have. If you've been at this longer than me, I'd love to hear from you.</p>
+`;
+
+/* ---------- helpers ---------- */
+const MONTHS = { jan:0, feb:1, mar:2, apr:3, may:4, jun:5, jul:6, aug:7, sep:8, oct:9, nov:10, dec:11 };
+
+function slugOf(file) { return file.replace(/\.md$/i, ""); }
+
+function dateFromFile(file) {
+  const m = slugOf(file).match(/^([A-Za-z]{3})-(\d{1,2})-(\d{4})/);
+  if (!m) return null;
+  return new Date(+m[3], MONTHS[m[1].toLowerCase()], +m[2]);
+}
+
+function fmtDate(d) {
+  return d ? d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "";
+}
+
+function stripFrontMatter(md) {
+  return md.replace(/^---[\s\S]*?\n---\s*\n/, "");
+}
+
+function parsePost(file, raw) {
+  let md = stripFrontMatter(raw).trim();
+  let title = slugOf(file);
+  const fmTitle = raw.match(/^---[\s\S]*?\ntitle:\s*"?(.+?)"?\s*\n[\s\S]*?---/);
+  const h1 = md.match(/^#\s+(.+)\s*\n/);
+  if (h1) { title = h1[1].trim(); md = md.slice(h1[0].length).trim(); }
+  else if (fmTitle) { title = fmTitle[1]; }
+
+  const firstPara = md.split(/\n\s*\n/).find(p => p.trim() && !p.trim().startsWith("#")) || "";
+  const plain = firstPara.replace(/[*_`#>\[\]]/g, "").replace(/\(.*?\)/g, "").trim();
+  const excerpt = plain.length > 190 ? plain.slice(0, 190).replace(/\s+\S*$/, "") + "…" : plain;
+  const words = md.split(/\s+/).length;
+
+  return { file, slug: slugOf(file), date: dateFromFile(file), title, body: md, excerpt,
+           minutes: Math.max(1, Math.round(words / 220)) };
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+}
+
+/* ---------- load all posts once ---------- */
+let postsPromise = null;
+function loadPosts() {
+  if (!postsPromise) {
+    postsPromise = Promise.all(POST_FILES.map(f =>
+      fetch(`${POSTS_FOLDER}/${encodeURIComponent(f)}`)
+        .then(r => { if (!r.ok) throw new Error(`${f}: ${r.status}`); return r.text(); })
+        .then(txt => parsePost(f, txt))
+        .catch(err => { console.error("Could not load post", err); return null; })
+    )).then(list => list.filter(Boolean).sort((a, b) => (b.date || 0) - (a.date || 0)));
+  }
+  return postsPromise;
+}
+
+/* ---------- views ---------- */
+const app = document.getElementById("app");
+
+function setActive(which) {
+  document.getElementById("nav-home").classList.toggle("active", which === "home");
+  document.getElementById("nav-about").classList.toggle("active", which === "about");
+}
+
+async function renderHome() {
+  setActive("home");
+  document.title = "Learning Crypto in Public";
+  const posts = await loadPosts();
+  if (!posts.length) {
+    app.innerHTML = `<p class="status">No posts found. Check that the file names in POST_FILES match the files in the "${POSTS_FOLDER}" folder exactly.</p>`;
+    return;
+  }
+  app.innerHTML = `
+    <section class="hero">
+      <span class="tag">Six months in and counting</span>
+      <h1>Figuring out crypto, one post at a time.</h1>
+      <p>I'm new to this and learning as I go. Here's what I've tried, what's confused me, and what I've picked up along the way.</p>
+    </section>
+    <div class="section-label">Latest posts</div>
+    <div>
+      ${posts.map(p => `
+        <a class="post-card" href="#/post/${encodeURIComponent(p.slug)}">
+          <div class="meta">${fmtDate(p.date)} · ${p.minutes} min read</div>
+          <h2>${escapeHtml(p.title)}</h2>
+          <p>${escapeHtml(p.excerpt)}</p>
+          <span class="read-more">Read post →</span>
+        </a>`).join("")}
+    </div>`;
+}
+
+async function renderPost(slug) {
+  setActive("home");
+  const posts = await loadPosts();
+  const i = posts.findIndex(p => p.slug === slug);
+  if (i === -1) {
+    app.innerHTML = `<p class="status">Post not found. <a href="#/">Back to all posts</a></p>`;
+    return;
+  }
+  const p = posts[i];
+  const newer = posts[i - 1], older = posts[i + 1];
+  document.title = `${p.title} · Learning Crypto in Public`;
+  app.innerHTML = `
+    <article>
+      <a class="back" href="#/">← All posts</a>
+      <div class="meta">${fmtDate(p.date)} · ${p.minutes} min read</div>
+      <h1>${escapeHtml(p.title)}</h1>
+      <div class="content">${marked.parse(p.body)}</div>
+      <div class="post-nav">
+        ${older ? `<a href="#/post/${encodeURIComponent(older.slug)}"><span class="dir">← Older</span><span class="t">${escapeHtml(older.title)}</span></a>` : ""}
+        ${newer ? `<a class="next" href="#/post/${encodeURIComponent(newer.slug)}"><span class="dir">Newer →</span><span class="t">${escapeHtml(newer.title)}</span></a>` : ""}
+      </div>
+    </article>`;
+}
+
+function renderAbout() {
+  setActive("about");
+  document.title = "About · Learning Crypto in Public";
+  app.innerHTML = `<section class="about">${ABOUT_HTML}</section>`;
+}
+
+function router() {
+  const hash = location.hash.replace(/^#/, "") || "/";
+  window.scrollTo(0, 0);
+  if (hash.startsWith("/post/")) renderPost(decodeURIComponent(hash.slice(6)));
+  else if (hash === "/about") renderAbout();
+  else renderHome();
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+window.addEventListener("hashchange", router);
+router();
+</script>
+</body>
+</html>
